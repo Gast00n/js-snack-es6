@@ -54,23 +54,23 @@ $(document).ready( function() {
 
 
 
-  const names = ['Franco', 'Luigi', 'Filippo', 'Alessandro', 'Adele', 'Alessia'];
-  const arrayVal = names.length - 1;
-  const min = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
-  while (isNaN(min) || min < 1 || min > arrayVal) {
-    min = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
-  }
-  const max = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
-  while (isNaN(max) || max < min || max > arrayVal) {
-    max = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
-  }
-  let newNames = [];
-  newNames = names.filter( (element, index) => {
-      if (index >= min && index <= max) {
-          return element
-    } 
-  });
-alert('I nomi selezionati nel range tra ' + min + ' e ' + max + ' sono:\n' + newNames);
+//   const names = ['Franco', 'Luigi', 'Filippo', 'Alessandro', 'Adele', 'Alessia'];
+//   const arrayVal = names.length - 1;
+//   const min = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+//   while (isNaN(min) || min < 1 || min > arrayVal) {
+//     min = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+//   }
+//   const max = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+//   while (isNaN(max) || max < min || max > arrayVal) {
+//     max = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+//   }
+//   let newNames = [];
+//   newNames = names.filter( (element, index) => {
+//       if (index >= min && index <= max) {
+//           return element
+//     } 
+//   });
+// alert('I nomi selezionati nel range tra ' + min + ' e ' + max + ' sono:\n' + newNames);
 
 
  /**
@@ -83,14 +83,22 @@ alert('I nomi selezionati nel range tra ' + min + ' e ' + max + ' sono:\n' + new
   * 
   */
 
-//   var condominio = [
-//     {famiglia: 'Rossi', componenti: 4},
-//     {famiglia: 'Verdi', componenti: 2},
-//     {famiglia: 'Bianchi', componenti: 4},
-//     {famiglia: 'Gialli', componenti: 8}
-//   ]
-//   var condscala = [];
+  const condominio = [
+    {famiglia: 'Rossi', componenti: 4},
+    {famiglia: 'Verdi', componenti: 2},
+    {famiglia: 'Bianchi', componenti: 4},
+    {famiglia: 'Gialli', componenti: 8}
+  ]
+  let condscala = [];
   
+  condscala = condominio.map( (element) => {
+    return {
+        ...element, // QUI USO LO SPREAD
+        scala: generateScala()
+        }
+});
+
+
 //   for (var i = 0; i < condominio.length; i++) {
 //     var scala = {
 //       famiglia: condominio[i].famiglia,
@@ -100,20 +108,20 @@ alert('I nomi selezionati nel range tra ' + min + ' e ' + max + ' sono:\n' + new
 //     condscala.push(scala);
 //   }
 
-//   console.table(condominio);
-//   console.table(condscala);
+  console.table(condominio);
+  console.table(condscala);
 
-//   //Function Scala
+  //Function Scala
 
-//   function generateScala() {
-//     var scale = 'abc';
-//     var scala = scale[randScala(0, scale.length - 1)];
+  function generateScala() {
+    let scale = 'abc';
+    let scala = scale[randScala(0, scale.length - 1)];
 
-//     return scala;
-//   }
+    return scala;
+  }
 
-//   function randScala(min,max) {
-//     return Math.floor (Math.random() * max - min + 1 ) + min;
-//   }
+  function randScala(min,max) {
+    return Math.floor (Math.random() * max - min + 1 ) + min;
+  }
 
 });
